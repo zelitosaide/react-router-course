@@ -6,7 +6,11 @@ import { getInvoices } from "./api";
 export async function loader({ request }) {
   const url = new URL(request.url);
   const page = url.searchParams.get("page");
-  return getInvoices(page, 4);
+  if (url.href === "http://localhost:3000/sales/invoices") {
+    return getInvoices(1, 4);
+  } else if (page) {
+    return getInvoices(page, 4);
+  }
 }
 
 export function Invoices() {

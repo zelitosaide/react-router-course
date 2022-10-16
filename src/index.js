@@ -254,6 +254,10 @@ const paginationRoutesRouter = createBrowserRouter([
                 path: ":invoiceId",
                 loader: pagInvoiceLoader,
                 element: <PagInvoice />
+              },
+              {
+                index: true,
+                element: <p style={{ paddingLeft: 5 }}>Select an invoice</p>
               }
             ]
           },
