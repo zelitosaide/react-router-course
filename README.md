@@ -72,3 +72,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## What is next?
 
 * Nested Routes
+* https://kentcdodds.com/blog/javascript-to-know-for-react
+* https://egghead.io/lessons/react-a-beginners-guide-to-react-introduction
+* https://remix.run/docs/en/v1/tutorials/jokes

@@ -28,8 +28,9 @@ body {
   color: #121212;
 }
 textarea,
-input,
-button {
+input
+/* ,button  */
+{
   font-size: 1rem;
   font-family: inherit;
   border: none;
@@ -40,21 +41,23 @@ button {
   line-height: 1.5;
   margin: 0;
 }
-button {
+/* button {
   color: #3992ff;
   font-weight: 500;
-}
+} */
 
 textarea:hover,
-input:hover,
-button:hover {
+input:hover
+/* , */
+/* button:hover  */
+{
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
 }
 
-button:active {
+/* button:active {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
   transform: translateY(1px);
-}
+} */
 
 #contact h1 {
   display: flex;
@@ -380,3 +383,10 @@ i {
   justify-content: center;
   width: 100%;
 }
+
+
+#nav::after {
+  content: "";
+  display: table;
+  clear: both;
+} 
