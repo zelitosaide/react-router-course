@@ -9,12 +9,13 @@ export async function loader({ request }) {
   if (url.href === "http://localhost:3000/sales/invoices") {
     return getInvoices(1, 4);
   } else if (page) {
+    console.log(page);
     return getInvoices(page, 4);
   }
 }
 
 export function Invoices() {
-  const { items: invoices, total } = useLoaderData();
+  const { items: invoices, pageInfo: { totalResults } } = useLoaderData();
   const [page, setPage] = useState(1);
 
   const invoiceItems = invoices.map(function (item, index) {
@@ -58,7 +59,7 @@ export function Invoices() {
               name="page"
               value={page}
               onClick={function () {
-                if (page < Math.ceil(total / 4)) {
+                if (page < Math.ceil(totalResults / 4)) {
                   setPage(prev => prev + 1);
                 }
               }}
