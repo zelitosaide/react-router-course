@@ -81,6 +81,9 @@ import {
 } from "./pagination/invoice";
 import { Auth } from "./auth/auth";
 
+// Auth
+import { Root as AuthRoot } from "./auth/root";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -296,6 +299,14 @@ const paginationRoutesRouter = createBrowserRouter([
         element: <PagReports />,
       },
     ],
+  },
+]);
+
+// Auth
+const authRoutesRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AuthRoot />,
   },
 ]);
 
