@@ -307,6 +307,35 @@ const authRoutesRouter = createBrowserRouter([
   {
     path: "/",
     element: <AuthRoot />,
+    children: [
+      {
+        path: "contact",
+        element: <div>Contact</div>,
+      },
+      {
+        path: "dashboard",
+        element: <div>Dashboard</div>,
+        loader: async function ({ request }) {
+          fetch("/api/dashboard.json", {
+            signal: request.signal,
+          });
+        },
+      },
+      {
+        element: <div>Auth Layout</div>,
+        children: [
+          {
+            path: "login",
+            element: <div>Login</div>,
+            loader: async function redirectIfUser() {},
+          },
+          {
+            path: "logout",
+            action: async function logoutUser() {},
+          },
+        ],
+      },
+    ],
   },
 ]);
 
