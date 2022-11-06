@@ -1,69 +1,85 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider
-} from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import './index.css';
+import "./index.css";
 
 import {
   Root,
   loader as rootLoader,
-  action as rootAction
-} from './routes/root';
+  action as rootAction,
+} from "./routes/root";
 import { ErrorPage } from "./error-page";
 import {
   Contact,
   loader as contactLoader,
-  action as contactAction
-} from './routes/contact';
+  action as contactAction,
+} from "./routes/contact";
 import {
   EditContact,
   loader as editContactLoader,
-  action as editContactAction
+  action as editContactAction,
 } from "./routes/edit-contact";
 import { action as destroyAction } from "./routes/destroy";
-import { Index } from './routes';
+import { Index } from "./routes";
 
 // Nested Routes : v1
-import { Root as RootV1 } from './nested-routes/routes-v1/root';
-import { Panel, loader as panelLoader } from './nested-routes/routes-v1/panel';
-import { PanelItem, loader as panelItemLoader } from './nested-routes/routes-v1/panel-item';
-import { PanelSubitem, loader as panelSubitemLoader } from './nested-routes/routes-v1/panel-subitem';
+import { Root as RootV1 } from "./nested-routes/routes-v1/root";
+import { Panel, loader as panelLoader } from "./nested-routes/routes-v1/panel";
+import {
+  PanelItem,
+  loader as panelItemLoader,
+} from "./nested-routes/routes-v1/panel-item";
+import {
+  PanelSubitem,
+  loader as panelSubitemLoader,
+} from "./nested-routes/routes-v1/panel-subitem";
 
 // Nested Routes : v2
-import { Root as RootV2 } from './nested-routes/routes-v2/root';
-import { Dashboard } from './nested-routes/routes-v2/dashboard';
-import { Accounts } from './nested-routes/routes-v2/accounts';
-import { Sales, loader as salesNav } from './nested-routes/routes-v2/sales';
-import { Expenses } from './nested-routes/routes-v2/expenses';
-import { Reports } from './nested-routes/routes-v2/reports';
-import { SalePanel, loader as salePanelLoader } from './nested-routes/routes-v2/sale-panel';
-import { ListItem, loader as listItemLoader } from './nested-routes/routes-v2/listItem';
+import { Root as RootV2 } from "./nested-routes/routes-v2/root";
+import { Dashboard } from "./nested-routes/routes-v2/dashboard";
+import { Accounts } from "./nested-routes/routes-v2/accounts";
+import { Sales, loader as salesNav } from "./nested-routes/routes-v2/sales";
+import { Expenses } from "./nested-routes/routes-v2/expenses";
+import { Reports } from "./nested-routes/routes-v2/reports";
+import {
+  SalePanel,
+  loader as salePanelLoader,
+} from "./nested-routes/routes-v2/sale-panel";
+import {
+  ListItem,
+  loader as listItemLoader,
+} from "./nested-routes/routes-v2/listItem";
 
 // Nested Routes : v3
-import { Root as Rootv3 } from './nested-routes/routes-v3/root';
-import { Expenses as ExpensesV3 } from './nested-routes/routes-v3/expenses';
+import { Root as Rootv3 } from "./nested-routes/routes-v3/root";
+import { Expenses as ExpensesV3 } from "./nested-routes/routes-v3/expenses";
 import {
   Invoices as InvoicesV3,
-  loader as invoicesLoader
-} from './nested-routes/routes-v3/invoices';
-import { Invoice, loader as invoiceLoader } from './nested-routes/routes-v3/invoice';
+  loader as invoicesLoader,
+} from "./nested-routes/routes-v3/invoices";
+import {
+  Invoice,
+  loader as invoiceLoader,
+} from "./nested-routes/routes-v3/invoice";
 
 // Pagination
-import { Root as PaginationRoot } from './pagination/root';
+import { Root as PaginationRoot } from "./pagination/root";
 import { Accounts as PagAccounts } from "./pagination/accounts";
 import { Dashboard as PagDashboard } from "./pagination/dashboard";
 import { Sales as PagSales } from "./pagination/sales";
 import { Expenses as PagExpenses } from "./pagination/expenses";
 import { Reports as PagReports } from "./pagination/reports";
-import { Overview } from './pagination/overview';
-import { Subscriptions } from './pagination/subscriptions';
-import { Invoices, loader as pagInvoicesLoader } from './pagination/invoices';
-import { Customers } from './pagination/customers';
-import { Deposits } from './pagination/deposits';
-import { Invoice as PagInvoice, loader as pagInvoiceLoader } from './pagination/invoice';
+import { Overview } from "./pagination/overview";
+import { Subscriptions } from "./pagination/subscriptions";
+import { Invoices, loader as pagInvoicesLoader } from "./pagination/invoices";
+import { Customers } from "./pagination/customers";
+import { Deposits } from "./pagination/deposits";
+import {
+  Invoice as PagInvoice,
+  loader as pagInvoiceLoader,
+} from "./pagination/invoice";
+import { Auth } from "./auth/auth";
 
 const router = createBrowserRouter([
   {
@@ -78,28 +94,28 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Index />
+            element: <Index />,
           },
           {
             path: "contacts/:contactId",
             element: <Contact />,
             loader: contactLoader,
-            action: contactAction
+            action: contactAction,
           },
           {
             path: "contacts/:contactId/edit",
             element: <EditContact />,
             loader: editContactLoader,
-            action: editContactAction
+            action: editContactAction,
           },
           {
             path: "contacts/:contactId/destroy",
             action: destroyAction,
-            errorElement: <div>Oops! There was an error.</div>
-          }
-        ]
-      }
-    ]
+            errorElement: <div>Oops! There was an error.</div>,
+          },
+        ],
+      },
+    ],
   },
 ]);
 
@@ -122,14 +138,14 @@ const nestedRoutesRouterV1 = createBrowserRouter([
               {
                 path: ":panelSubitemId",
                 loader: panelSubitemLoader,
-                element: <PanelSubitem />
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+                element: <PanelSubitem />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]);
 
 // Nested Routes : v2
@@ -140,11 +156,11 @@ const nestedRoutesRouterV2 = createBrowserRouter([
     children: [
       {
         path: "dashboard",
-        element: <Dashboard />
+        element: <Dashboard />,
       },
       {
         path: "accounts",
-        element: <Accounts />
+        element: <Accounts />,
       },
       {
         path: "sales",
@@ -159,22 +175,22 @@ const nestedRoutesRouterV2 = createBrowserRouter([
               {
                 path: ":listItemId",
                 loader: listItemLoader,
-                element: <ListItem />
-              }
-            ]
-          }
-        ]
+                element: <ListItem />,
+              },
+            ],
+          },
+        ],
       },
       {
         path: "expenses",
-        element: <Expenses />
+        element: <Expenses />,
       },
       {
         path: "reports",
-        element: <Reports />
+        element: <Reports />,
       },
-    ]
-  }
+    ],
+  },
 ]);
 
 // Nested Routes : v3
@@ -185,7 +201,7 @@ const nestedRoutesRouterV3 = createBrowserRouter([
     children: [
       {
         path: "expenses",
-        element: <ExpensesV3 />
+        element: <ExpensesV3 />,
       },
       {
         path: "invoices",
@@ -203,9 +219,9 @@ const nestedRoutesRouterV3 = createBrowserRouter([
               <main style={{ padding: "1rem" }}>
                 <p>Select an invoice</p>
               </main>
-            )
-          }
-        ]
+            ),
+          },
+        ],
       },
       {
         path: "*",
@@ -213,9 +229,9 @@ const nestedRoutesRouterV3 = createBrowserRouter([
           <main style={{ padding: "1rem" }}>
             <p>There's nothing here!</p>
           </main>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
 ]);
 
@@ -227,11 +243,11 @@ const paginationRoutesRouter = createBrowserRouter([
     children: [
       {
         path: "dashboard",
-        element: <PagDashboard />
+        element: <PagDashboard />,
       },
       {
         path: "accounts",
-        element: <PagAccounts />
+        element: <PagAccounts />,
       },
       {
         path: "sales",
@@ -239,11 +255,11 @@ const paginationRoutesRouter = createBrowserRouter([
         children: [
           {
             path: "overview",
-            element: <Overview />
+            element: <Overview />,
           },
           {
             path: "subscriptions",
-            element: <Subscriptions />
+            element: <Subscriptions />,
           },
           {
             path: "invoices",
@@ -253,38 +269,38 @@ const paginationRoutesRouter = createBrowserRouter([
               {
                 path: ":invoiceId",
                 loader: pagInvoiceLoader,
-                element: <PagInvoice />
+                element: <PagInvoice />,
               },
               {
                 index: true,
-                element: <p style={{ paddingLeft: 5 }}>Select an invoice</p>
-              }
-            ]
+                element: <p style={{ paddingLeft: 5 }}>Select an invoice</p>,
+              },
+            ],
           },
           {
             path: "customers",
-            element: <Customers />
+            element: <Customers />,
           },
           {
             path: "deposits",
-            element: <Deposits />
-          }
-        ]
+            element: <Deposits />,
+          },
+        ],
       },
       {
         path: "expenses",
-        element: <PagExpenses />
+        element: <PagExpenses />,
       },
       {
         path: "reports",
-        element: <PagReports />
+        element: <PagReports />,
       },
-    ]
-  }
+    ],
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-  <RouterProvider router={paginationRoutesRouter} />
-);
+// root.render(<RouterProvider router={paginationRoutesRouter} />);
+
+root.render(<Auth />);
