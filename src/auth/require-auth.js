@@ -1,7 +1,8 @@
-export function RequireAuth() {
+export function RequireAuth({ children }) {
   return (
     <div>
-      <h1>Require Auth</h1>
+      <h3>Require Auth</h3>
+      {children}
     </div>
   );
 }

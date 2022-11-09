@@ -1,7 +1,7 @@
 export function ProtectedPage() {
   return (
     <div>
-      <h1>Protected Page</h1>
+      <h4>Protected Page</h4>
     </div>
   );
 }
