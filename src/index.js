@@ -84,10 +84,11 @@ import { Auth } from "./auth/auth";
 // Auth
 import { Layout } from "./auth/layout";
 import { PublicPage } from "./auth/public-page";
-import { LoginPage } from "./auth/login-page";
+import { LoginPage, redirectIfUser } from "./auth/login-page";
 import { RequireAuth } from "./auth/require-auth";
 import { ProtectedPage } from "./auth/protected-page";
 import { AuthProvider } from "./auth/auth-provider";
+import { action as loginAction } from "./auth/login-page";
 
 const router = createBrowserRouter([
   {
@@ -351,6 +352,8 @@ const authRoutesRouter = createBrowserRouter([
       },
       {
         path: "/login",
+        action: loginAction,
+        loader: redirectIfUser,
         element: <LoginPage />,
       },
       {
