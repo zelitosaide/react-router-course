@@ -88,6 +88,7 @@ import { PublicPage } from "./auth/public-page";
 import { LoginPage } from "./auth/login-page";
 import { RequireAuth } from "./auth/require-auth";
 import { ProtectedPage } from "./auth/protected-page";
+import { AuthProvider } from "./auth/auth-provider";
 
 const router = createBrowserRouter([
   {
@@ -367,4 +368,8 @@ const authRoutesRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={authRoutesRouter} />);
+root.render(
+  <AuthProvider>
+    <RouterProvider router={authRoutesRouter} />
+  </AuthProvider>
+);

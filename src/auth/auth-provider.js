@@ -1,7 +1,23 @@
-export function AuthProvider() {
+import { useState } from "react";
+
+import { AuthContext } from "./auth-context";
+
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  function signin() {}
+
+  function signout() {}
+
   return (
-    <div>
-      <h1>Auth Provider</h1>
-    </div>
+    <AuthContext.Provider
+      value={{
+        currentUser,
+        signin,
+        signout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
 }
