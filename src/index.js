@@ -82,7 +82,6 @@ import {
 import { Auth } from "./auth/auth";
 
 // Auth
-import { Root as AuthRoot } from "./auth/root";
 import { Layout } from "./auth/layout";
 import { PublicPage } from "./auth/public-page";
 import { LoginPage } from "./auth/login-page";
