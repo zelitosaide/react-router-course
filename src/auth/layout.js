@@ -1,10 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
+import { AuthStatus } from "./auth-status";
 
 export function Layout() {
   return (
     <div>
-      <h1>Layout</h1>
-      {/* AuthStatus */}
+      <AuthStatus />
 
       <ul>
         <li>

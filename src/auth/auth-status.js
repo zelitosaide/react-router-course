@@ -1,7 +1,18 @@
+import { useContext } from "react";
+
+import { AuthContext } from "./auth-context";
+
 export function AuthStatus() {
+  const auth = useContext(AuthContext);
+
+  if (!auth.currentUser) {
+    return <p>You are not logged in.</p>;
+  }
+
   return (
-    <div>
-      <h1>Auth Status</h1>
-    </div>
+    <p>
+      Welcome {auth.currentUser}!{" "}
+      <button onClick={function () {}}>Sign out</button>
+    </p>
   );
 }
