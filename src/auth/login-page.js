@@ -11,6 +11,7 @@ export async function action({ request }) {
       "Content-type": "application/json; charset=UTF-8",
     },
   });
+
   const { playlistId } = await response.json();
   return redirect(`/${playlistId}`);
 }
